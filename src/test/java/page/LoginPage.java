@@ -15,11 +15,13 @@ public class LoginPage
 	
 	@FindBy(css="button[type='submit']")
 	private WebElement loginButton;
-	
-	public void LoginPage(WebDriver driver)
+
+	public LoginPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
 	}
+	
+	
 	
 	public void setUserName(String un)
 	{
@@ -28,7 +30,7 @@ public class LoginPage
 	
 	public void setPassword(String pw)
 	{
-		unTB.sendKeys(pw);
+		pwTB.sendKeys(pw);
 	}
 	
 	public void clickLoginButton()

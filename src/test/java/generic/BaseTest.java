@@ -29,10 +29,10 @@ public class BaseTest {
 	public final String d_grid="no";
 	public final String d_gridurl="http://localhost:4444";
 	public final String d_browser="chrome";
-	public final String d_appurl="http://www.google.com";	
-	public final String d_ito="10";
-	public final String d_eto="10"; 
-	
+	public final String d_appurl="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";	
+	public final String d_ito="30";
+	public final String d_eto="30"; 
+	public final String xl_path="./src/test/resources/data/actiTIME.xlsx";
 	public WebDriver driver;
 	public WebDriverWait wait;
 	
