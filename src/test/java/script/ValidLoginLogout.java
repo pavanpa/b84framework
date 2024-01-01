@@ -5,15 +5,14 @@ import org.testng.annotations.Test;
 
 import generic.BaseTest;
 import generic.Excel;
-import page.DashboardPage;
 import page.LoginPage;
 
-public class ValidLogin extends BaseTest
+public class ValidLoginLogout extends BaseTest
 {
-	@Test(priority = 1,groups= {"smoke","regression"})
-	public void testValidLogin() 
+
+	@Test(priority = 3,groups= {"smoke","regression"})
+	public void testValidLoginLogout()
 	{
-		
 		String un=Excel.getCellValue(xl_path, "ValidLogin", 1, 0);
 		String pw=Excel.getCellValue(xl_path, "ValidLogin", 1, 1);
 //		1. enter valid un
@@ -23,13 +22,14 @@ public class ValidLogin extends BaseTest
 		loginPage.setPassword(pw);
 //		3. click login button
 		loginPage.clickLoginButton();
-//		4. home page should be displayed
-		DashboardPage dashBoardPage=new DashboardPage(driver);
-		
-		boolean result = dashBoardPage.verifyDashboardPageIsDisplayed(wait);
-		
+//		4.click UserMenue DropDown
+		loginPage.clickUserMenueDropDown();
+//		5. click logout link
+		loginPage.clickLogoutButton();
+//		5. verify that login page is displayed
+		boolean result = loginPage.verifyLoginPageDisplayed(wait);
 		Assert.assertTrue(result);
-		
-
 	}
+	
+	
 }

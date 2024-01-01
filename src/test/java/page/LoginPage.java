@@ -21,6 +21,12 @@ public class LoginPage
 	
 	@FindBy(xpath="//p[1]")
 	private WebElement errMsg;
+	
+	@FindBy(xpath = "(//li)[13]")
+	private WebElement userMenue;
+	
+	@FindBy(xpath = "//a[contains(text(),\"Logout\")]")
+	private WebElement logoutButton;
 
 	public LoginPage(WebDriver driver)
 	{
@@ -43,8 +49,19 @@ public class LoginPage
 	{
 		loginButton.click();
 	}
+	
+	public void clickUserMenueDropDown()
+	{
+		userMenue.click();
+	}
+	
+	public void clickLogoutButton()
+	{
+		logoutButton.click();
+	}
 
-	public boolean verifyErrMsgDisplayed(WebDriverWait wait) {
+	public boolean verifyErrMsgDisplayed(WebDriverWait wait) 
+	{
 		try 
 		{
 			wait.until(ExpectedConditions.visibilityOf(errMsg));
@@ -57,4 +74,24 @@ public class LoginPage
 			return false;
 		}
 	}
+	
+	public boolean verifyLoginPageDisplayed(WebDriverWait wait)
+	{
+		try 
+		{
+			wait.until(ExpectedConditions.visibilityOf(loginButton));
+			Reporter.log("Login Page is displayed",true);
+			return true;
+		}
+		catch (Exception e) 
+		{
+			Reporter.log("Login Page is NOT displayed",true);
+			return false;
+		}
+	}
+
+
+
+	
+	
 }
